@@ -1,3 +1,24 @@
+h1 {
+  text-align: center;
+}
+
+.modal {
+    display: flex;
+    width: 40rem;
+    height: 40rem;
+    padding: 5px;
+    border: 1px solid blue; 
+    background-color: yellow; 
+}
+
+.cat-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cat CodePen: titled CSS Cat by Nayara Alves found at https://codepen.io/diemoritat/pen/vxNgrj */
+
 html{
 	background-color: #FCE5AF;
 }
@@ -23,7 +44,6 @@ html{
 .cat-nose{
 	position: absolute;
     bottom: 0;
-    z-index: 1;
     left: 4px;
     width: 0px;
     height: 0px;
@@ -31,6 +51,7 @@ html{
     border-left: 46px solid transparent;
     border-bottom: 82px solid #fff;
     border-radius: 50%;
+    
 }
 
 .cat-nose:after{
@@ -54,7 +75,6 @@ html{
 	top: 73px;
 	left: 50%;
 	margin-left: -25px;
-	z-index: 2;
 	overflow: hidden;
 }
 
@@ -87,8 +107,7 @@ html{
 	top: 50px;
 	width: 55px;
 	left: 50%;
-	margin-left: -27px;
-	z-index: 2;
+  margin-left: -27px;
 }
 
 .cat-eyes:before{
@@ -115,6 +134,7 @@ html{
 	border-radius: 50%;
 }
 
+
 .cat-face:before{
 	position: absolute;
 	display: block;
@@ -126,7 +146,7 @@ html{
 	border-bottom: 40px solid #E58C56;
 	border-radius: 5px;
 	left: -15px;
-	top: -5px;
+  top: -5px;
 	transform: rotate(-40deg);
 }
 
@@ -141,6 +161,6 @@ html{
 	border-bottom: 40px solid #E58C56;
 	border-radius: 5px;
 	right: -15px;
-	top: -5px;
+  top: -5px;
 	transform: rotate(40deg);
 }

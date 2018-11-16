@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from "react-modal";
 import axios from 'axios';
+
 import './App.css';
 
 const appElement = document.getElementById('root');
@@ -14,6 +15,7 @@ class App extends Component {
     this.state = {
       modalOpen: false,
       error: null,
+      file: ''
     }
     this.handleModalOpen = this.handleModalOpen.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
@@ -21,10 +23,11 @@ class App extends Component {
   handleModalOpen() {
     axios.get(CATPIX_API)
       .then(response => {
-        const { source } = response.data.file;
+        const file = response.data.file;
         this.setState({
           modalOpen: true,
-          error: null
+          error: null,
+          file: file
         });
       })
       .catch(err => {
@@ -39,35 +42,35 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.error && <div className="red bg-black f4 mb4 h3 w5">
+      <div className="container">
+        {this.state.error && <div className="">
           Error: {this.state.error.message}</div>}
-        <Modal classcloseTimeoutMS={150} isOpen={this.state.modalOpen}>
-
+        <Modal classcloseTimeoutMS={150} isOpen={this.state.modalOpen} className="modal">
           <header className="App-header">
-            <button className="f1 ph3 pv2 mb2 dib white bg-black b--none" onClick={this.handleModalClose}>X</button>
+            <button className="x-button" onClick={this.handleModalClose}>X</button>
           </header>
-          </Modal>
+          <div>
+            <h1>Here is a cat...</h1>
+            <img src={this.state.file} alt="Random cat." className="cat-image"></img>
+          </div>
 
+        </Modal>
+        <div className="">
+          <main className="App-main">
+            <div className="drawing-holder" onClick={this.handleModalOpen}>
+              <div className="cat-face">
 
-          <div className="flex flex-column h-100" onClick={this.handleModalOpen}>
-
-            <main className="App-main">
-              <div class="drawing-holder">
-                <div class="cat-face">
-                  <div class="cat-eyes"></div>
-                  <div class="cat-nose"></div>
-                  <div class="cat-mouth"></div>
-                </div>
+                <div className="cat-nose"></div>
+                <div className="cat-mouth"></div>
+                <div className="cat-eyes"></div>
               </div>
+            </div>
 
-              <h1>Here is a cat...</h1>
-              <p>{this.state.source}</p>
-            </main>
-            <footer className="App-footer">
-            </footer>
-          </div >
+          </main>
+        </div>
 
+        <footer className="App-footer">
+        </footer>
       </div>
     );
   }
