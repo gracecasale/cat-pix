@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Modal from "react-modal";
-import Axios from 'axios';
+import axios from 'axios';
 import './App.css';
 
 const appElement = document.getElementById('root');
 Modal.setAppElement(appElement);
 
-const CATPIX_API = isDev ? '/activity' : 'https://aws.random.cat/meow';
+const CATPIX_API = 'https://aws.random.cat/meow';
 
 class App extends Component {
   constructor(props) {
@@ -21,8 +21,7 @@ class App extends Component {
   handleModalOpen() {
     axios.get(CATPIX_API)
       .then(response => {
-        const { activty } = response.data;
-        const { participants } = response.data;
+        const { source } = response.data.file;
         this.setState({
           modalOpen: true,
           error: null
@@ -41,37 +40,35 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="App-header">
-          Cat Pix App
-       </header>
-        <main className="App-main">
-          <div class="wrapper">
+        {this.state.error && <div className="red bg-black f4 mb4 h3 w5">
+          Error: {this.state.error.message}</div>}
+        <Modal classcloseTimeoutMS={150} isOpen={this.state.modalOpen}>
 
-            <div class="cat">
-              <span class="eyes left"></span>
-              <span class="eyes right"></span>
-              <span class="mouth"></span>
-            </div>
+          <header className="App-header">
+            <button className="f1 ph3 pv2 mb2 dib white bg-black b--none" onClick={this.handleModalClose}>X</button>
+          </header>
+          </Modal>
 
-            <div class="moon">
-              <div class="sphere"></div>
 
-            </div>
+          <div className="flex flex-column h-100" onClick={this.handleModalOpen}>
 
-            <div class="cloud-container">
-              <div class="cloud"></div>
-              <div class="cloud"></div>
-              <div class="cloud"></div>
-              <div class="cloud"></div>
-            </div>
+            <main className="App-main">
+              <div class="drawing-holder">
+                <div class="cat-face">
+                  <div class="cat-eyes"></div>
+                  <div class="cat-nose"></div>
+                  <div class="cat-mouth"></div>
+                </div>
+              </div>
 
-          </div>
+              <h1>Here is a cat...</h1>
+              <p>{this.state.source}</p>
+            </main>
+            <footer className="App-footer">
+            </footer>
+          </div >
 
-        </main>
-        <footer className="App-footer">
-
-        </footer>
-      </div >
+      </div>
     );
   }
 }
