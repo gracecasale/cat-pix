@@ -5,7 +5,7 @@ h1 {
   text-align: center;
 }
 .App-header {
-width: 100vw;
+width: 80vw;
 display: flex;
 flex-direction: row-reverse;
 padding-right: 2rem;
@@ -22,6 +22,7 @@ background-color: #FCE5AF;
 font-family: 'Mali', cursive;
 }
 .container {
+	width: 80vw;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -29,14 +30,16 @@ font-family: 'Mali', cursive;
 	align-items: center;
 	align-content: center;
 }
+
 .modal {
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-    height: 40rem;
     border: 1px solid #E58C56; 
     background-color: white; 
 }
@@ -182,4 +185,41 @@ html{
 	right: -15px;
   	top: -5px;
 	transform: rotate(40deg);
+}
+
+
+/*iPhone 5 */
+@media only screen 
+and (min-device-width: 320px)
+and (max-device-width: 568px) {
+	.cat-image {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		height: 11rem;
+	  }
+}
+
+/*iPhone 6/7/8 */
+@media only screen 
+and (min-device-width: 375px)
+and (max-device-width: 667px) {
+	.cat-image {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		height: 11rem;
+	  }
+}
+
+/*iPhone 6/7/8Plus */
+@media only screen 
+and (min-device-width: 414px)
+and (max-device-width: 736px) {
+	.cat-image {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		height: 11rem;
+	  }
 }
