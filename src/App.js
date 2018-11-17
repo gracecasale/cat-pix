@@ -49,7 +49,7 @@ class App extends Component {
           <header className="App-header">
             <button className="x-button" onClick={this.handleModalClose}>X</button>
           </header>
-          <div>
+          <div className="modal-content">
             <h1>Here is a cat...</h1>
             <img src={this.state.file} alt="Random cat." className="cat-image"></img>
           </div>
